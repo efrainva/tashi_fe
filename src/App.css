@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+nav{
+  display: flex;
+  justify-content: space-between;
+}
+
+.studentInfo{
+  display: flex;
+  flex-direction: row;
+  border: black 1px solid;
+}
+.tableContainer{
+  width: 80%;
+}
