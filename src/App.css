@@ -47,6 +47,7 @@ nav{
   flex-direction: row;
   border: black 1px solid;
 }
-.tableContainer{
-  width: 80%;
+
+.selectedTable{
+  width: 70%;
 }

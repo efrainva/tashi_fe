@@ -27,6 +27,10 @@ const useStyles = makeStyles({
     }
 
     return (
+        <div
+        className='selectedTable'
+        >
+
     <TableContainer component={Paper} className="tableContainer">
         <Table className={classes.table} size="small" aria-label="simple table">
           <TableHead>
@@ -34,28 +38,30 @@ const useStyles = makeStyles({
               <TableCell align="right">ID</TableCell>
               <TableCell align="right">Subjects </TableCell>
               <TableCell align="right">Avg. Score </TableCell>
-              <TableCell align="right"><button>actions</button></TableCell>
+              <TableCell align="right"><button>add</button></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.info.map((row, index) => (
-                
-              <TableRow
+            {props.info.map((row, index) => (  
+                <TableRow
                 // onClick={() => {
-                //   curserClick(index,row);
-                // }}
-                // key={row.name}
-                >
-                    {console.log(row,index)}
+                    //   curserClick(index,row);
+                    // }}
+                    // key={row.name}
+                    >
+                    {/* {console.log(row,index)} */}
                 <TableCell align="right">{row.subjectid}</TableCell>
                 <TableCell align="right">{row.subject}</TableCell>
                 <TableCell align="right">{row.score}</TableCell> 
-                <button align="right"> click for more </button>
+                <TableCell align="right">
+                    <button>edit</button><button>delete</button>
+                </TableCell> 
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+            </div>
     )}
 
 export default SelectedStudents;

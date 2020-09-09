@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 
 const Nav = (props) => {
         return (<nav> 
+            {/* {console.log(props.student)} */}
             <p>logo</p>
             <div class='studentInfo'>
 
@@ -14,7 +15,7 @@ const Nav = (props) => {
             <p>{props.studentCap}</p>
         </div>
 
-        <div>
+        <div >
             
         <TableContainer>
             <Table>
@@ -31,7 +32,7 @@ const Nav = (props) => {
         <TableContainer>
             <Table>
                 <TableCell>average score</TableCell>
-                <TableCell>{props.student.avg}</TableCell>
+                <TableCell>{props.student.score}</TableCell>
             </Table>
         </TableContainer>
         </div>
