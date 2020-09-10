@@ -49,13 +49,12 @@ const StudentTable = ( props ) => {
       .get("http://ec2-3-20-225-176.us-east-2.compute.amazonaws.com/students")
       .then(res => {
         setStudents(res.data.students);
-        console.log(res.data.students)
+
       })
       .catch(error => {});
   }, []);
 
   const curserClick = (item,row) => {
-    console.log(item)
     setSelected(students[item]);
       const url = `http://ec2-3-20-225-176.us-east-2.compute.amazonaws.com/subjects/${row.studentid}`
       axios
@@ -69,6 +68,21 @@ const StudentTable = ( props ) => {
         console.log(error,'here')
       })
   };
+
+  const resetSubjects = () => {
+    
+    const url = `http://ec2-3-20-225-176.us-east-2.compute.amazonaws.com/subjects/${selected.studentid}`
+      axios
+      .get(url)
+      .then((res)=>{
+        setStudentInfo(res.data.subjects)
+        if (res.data.subjects.length !== students.subject){
+        }
+      })
+      .catch(error=>{
+        console.log(error,'here')
+      })
+  }
 
   const refreshing = () =>{
     axios
@@ -164,7 +178,8 @@ const StudentTable = ( props ) => {
         </Table>
       </TableContainer>
       <h1>selected student</h1>
-      <SelectedStudents refresh={refreshing} studentKey={selected.studentid} info={studentInfo}/>
+      {/* refunc refreshes the subject data and resets the state */}
+      <SelectedStudents reFunc={resetSubjects}  studentKey={selected.studentid} info={studentInfo}/>
 
       {/* {console.log(studentInfo,'student info here')} */}
     </>
