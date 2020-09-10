@@ -46,7 +46,7 @@ const StudentTable = ( props ) => {
   
   useEffect(() => {
     axios
-      .get("http://ec2-3-20-225-176.us-east-2.compute.amazonaws.com/students")
+      .get("https://ec2-3-20-225-176.us-east-2.compute.amazonaws.com/students")
       .then(res => {
         setStudents(res.data.students);
 
@@ -56,7 +56,7 @@ const StudentTable = ( props ) => {
 
   const curserClick = (item,row) => {
     setSelected(students[item]);
-      const url = `http://ec2-3-20-225-176.us-east-2.compute.amazonaws.com/subjects/${row.studentid}`
+      const url = `https://ec2-3-20-225-176.us-east-2.compute.amazonaws.com/subjects/${row.studentid}`
       axios
       .get(url)
       .then((res)=>{
