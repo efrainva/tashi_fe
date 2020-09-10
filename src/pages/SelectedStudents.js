@@ -36,14 +36,14 @@ const useStyles = makeStyles({
     }
     const addsub = () => {
         axios
-        .post('http://3.20.225.176/subject/add')
+        .post('http://ec2-3-20-225-176.us-east-2.compute.amazonaws.com/subject/add')
         .then()
         .catch()
     }
 
     const getNewSubjects =()=>{
         axios
-        .get('http://3.20.225.176/students/add').
+        .get('http://ec2-3-20-225-176.us-east-2.compute.amazonaws.com/students/add').
         then()
         .catch()
     }
