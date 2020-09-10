@@ -54,6 +54,7 @@ const StudentTable = ( props ) => {
   }, []);
 
   const curserClick = (item,row) => {
+    console.log(item)
     setSelected(students[item]);
       const url = `http://localhost:3000/subjects/${row.studentid}`
       axios
@@ -68,7 +69,7 @@ const StudentTable = ( props ) => {
       })
   };
 
-  const refreashing = () =>{
+  const refreshing = () =>{
     axios
       .get("http://localhost:3000/students")
       .then(res => {
@@ -80,48 +81,48 @@ const StudentTable = ( props ) => {
   const addStudent = () => {
     axios
     .post('http://localhost:3000/students/add',newStudent)
-    .then(()=>refreashing() )
+    .then(()=>refreshing() )
     .catch(err=> console.log(err))
   }
 
   const editStudent = (id) => {
     axios
     .put(`http://localhost:3000/students/${id}`,selected)
-    .then(()=>refreashing())
+    .then(()=>refreshing())
     .catch(err=> console.log(err))
   }
   
   const deleteStudent = (id) => {
     axios
     .delete(`http://localhost:3000/delete/student/${id}`)
-    .then(()=>refreashing())
+    .then(()=>refreshing())
     .catch(err=> console.log(err))
   }
 
   const addSubject = (id) => {
     axios
     .post('http://localhost:3000/students/add',)
-    .then(()=>refreashing() )
+    .then(()=>refreshing() )
     .catch(err=> console.log(err))
   }
 
   const editSubject = (id) => {
     axios
     .put(`http://localhost:3000/subjects/${id}`)
-    .then(()=>refreashing())
+    .then(()=>refreshing())
     .catch(err=> console.log(err))
   }
   
   const deleteSubject = (id) => {
     axios
     .delete(`http://localhost:3000/delete/subject/${id}`)
-    .then(()=>refreashing())
+    .then(()=>refreshing())
     .catch()
   }
 
   return (
     <>
-    {console.log(selected)}
+    {console.log(selected.studentid)}
       <Nav  student={selected} studentCap={students.length}/>
       <h1>All students</h1>
       <TableContainer component={Paper} className="tableContainer">
@@ -162,7 +163,7 @@ const StudentTable = ( props ) => {
         </Table>
       </TableContainer>
       <h1>selected student</h1>
-      <SelectedStudents info={studentInfo}/>
+      <SelectedStudents refresh={refreshing} studentKey={selected.studentid} info={studentInfo}/>
 
       {/* {console.log(studentInfo,'student info here')} */}
     </>

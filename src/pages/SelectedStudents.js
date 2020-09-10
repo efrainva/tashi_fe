@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -18,12 +18,33 @@ const useStyles = makeStyles({
 
     const SelectedStudents = (props)=> {
     const classes = useStyles();
+    const [subjectOb,setSubjectOb] = useState({
+        studentid:props.studentKey,
+        subject:null,
+        score:null,
+        date:null,
+    })
 
+    const handleChange = (event) => {
+        event.preventDefault()
+        const {name,value} = event.target
+        setSubjectOb({
+            ...subjectOb,
+            [name]:value
+        })
+        setSubjectOb({studentid:props.studentKey})
+    }
     const addsub = () => {
-
         axios
-        .post()
+        .post('http://localhost:3000/subject/add')
         .then()
+        .catch()
+    }
+
+    const getNewSubjects =()=>{
+        axios
+        .get('http://localhost:3000/students/add').
+        then()
         .catch()
     }
 
@@ -31,16 +52,20 @@ const useStyles = makeStyles({
         <div
         className='selectedTable'
         >
-
+{console.log(subjectOb)}
     <TableContainer component={Paper} className="tableContainer">
         <Table className={classes.table} size="small" aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="right">ID</TableCell>
-              <TableCell align="left">Subject <br/><input /> </TableCell>
-              <TableCell align="left">Avg. Score <br/><input /> </TableCell>
-              <TableCell align="left">date <br/><input /> </TableCell>
-              <TableCell align="left"><button>add</button></TableCell>
+                <TableCell align="right">ID</TableCell>
+                <TableCell align="left">
+                    Subject <br/><input onChange={handleChange} name='subject' value={subjectOb.subject}/> 
+                </TableCell>
+                <TableCell align="left">
+                    Avg. Score <br/><input onChange={handleChange} name='score' value={subjectOb.score}/>
+                </TableCell>
+                <TableCell align="left">date <br/><input onChange={handleChange} type='date' name='date' value={subjectOb.date}/> </TableCell>
+                <TableCell align="left"><button onClick={addsub}>add</button></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -57,7 +82,7 @@ const useStyles = makeStyles({
                 <TableCell align="left"> <input value={row.score}/> </TableCell> 
                 <TableCell align="left"> <input value={row.date}/> </TableCell> 
                 <TableCell align="left">
-                    <button>edit</button><button>delete</button>
+                    {/* <button>edit</button><button>delete</button> */}
                 </TableCell> 
               </TableRow>
             ))}
