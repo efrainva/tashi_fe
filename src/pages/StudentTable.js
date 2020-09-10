@@ -46,7 +46,7 @@ const StudentTable = ( props ) => {
   
   useEffect(() => {
     axios
-      .get("http://localhost:3000/students")
+      .get("http://3.20.225.176/students")
       .then(res => {
         setStudents(res.data.students);
       })
@@ -56,7 +56,7 @@ const StudentTable = ( props ) => {
   const curserClick = (item,row) => {
     console.log(item)
     setSelected(students[item]);
-      const url = `http://localhost:3000/subjects/${row.studentid}`
+      const url = `http://3.20.225.176/subjects/${row.studentid}`
       axios
       .get(url)
       .then((res)=>{
@@ -71,7 +71,7 @@ const StudentTable = ( props ) => {
 
   const refreshing = () =>{
     axios
-      .get("http://localhost:3000/students")
+      .get("http://3.20.225.176/students")
       .then(res => {
         setStudents(res.data.students);
       })
@@ -80,42 +80,42 @@ const StudentTable = ( props ) => {
 
   const addStudent = () => {
     axios
-    .post('http://localhost:3000/students/add',newStudent)
+    .post('http://3.20.225.176/students/add',newStudent)
     .then(()=>refreshing() )
     .catch(err=> console.log(err))
   }
 
   const editStudent = (id) => {
     axios
-    .put(`http://localhost:3000/students/${id}`,selected)
+    .put(`http://3.20.225.176/students/${id}`,selected)
     .then(()=>refreshing())
     .catch(err=> console.log(err))
   }
   
   const deleteStudent = (id) => {
     axios
-    .delete(`http://localhost:3000/delete/student/${id}`)
+    .delete(`http://3.20.225.176/delete/student/${id}`)
     .then(()=>refreshing())
     .catch(err=> console.log(err))
   }
 
   const addSubject = (id) => {
     axios
-    .post('http://localhost:3000/students/add',)
+    .post('http://3.20.225.176/students/add',)
     .then(()=>refreshing() )
     .catch(err=> console.log(err))
   }
 
   const editSubject = (id) => {
     axios
-    .put(`http://localhost:3000/subjects/${id}`)
+    .put(`http://3.20.225.176/subjects/${id}`)
     .then(()=>refreshing())
     .catch(err=> console.log(err))
   }
   
   const deleteSubject = (id) => {
     axios
-    .delete(`http://localhost:3000/delete/subject/${id}`)
+    .delete(`http://3.20.225.176/delete/subject/${id}`)
     .then(()=>refreshing())
     .catch()
   }
