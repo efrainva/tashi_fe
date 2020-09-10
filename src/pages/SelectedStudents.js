@@ -8,6 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
+
 const useStyles = makeStyles({
     table: {
       minWidth: 650
@@ -36,9 +37,10 @@ const useStyles = makeStyles({
           <TableHead>
             <TableRow>
               <TableCell align="right">ID</TableCell>
-              <TableCell align="right">Subjects </TableCell>
-              <TableCell align="right">Avg. Score </TableCell>
-              <TableCell align="right"><button>add</button></TableCell>
+              <TableCell align="left">Subject <br/><input /> </TableCell>
+              <TableCell align="left">Avg. Score <br/><input /> </TableCell>
+              <TableCell align="left">date <br/><input /> </TableCell>
+              <TableCell align="left"><button>add</button></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -50,10 +52,11 @@ const useStyles = makeStyles({
                     // key={row.name}
                     >
                     {/* {console.log(row,index)} */}
-                <TableCell align="right">{row.subjectid}</TableCell>
-                <TableCell align="right">{row.subject}</TableCell>
-                <TableCell align="right">{row.score}</TableCell> 
-                <TableCell align="right">
+                <TableCell align="right"> {row.subjectid} </TableCell>
+                <TableCell align="left"> <input value={row.subject}/> </TableCell>
+                <TableCell align="left"> <input value={row.score}/> </TableCell> 
+                <TableCell align="left"> <input value={row.date}/> </TableCell> 
+                <TableCell align="left">
                     <button>edit</button><button>delete</button>
                 </TableCell> 
               </TableRow>
@@ -62,6 +65,6 @@ const useStyles = makeStyles({
         </Table>
       </TableContainer>
             </div>
-    )}
+)}
 
 export default SelectedStudents;

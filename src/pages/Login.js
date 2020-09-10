@@ -1,8 +1,5 @@
 import React,{useState} from 'react'
 
-// import { render } from '@testing-library/react'
-
-
 const Login = () => {
     const [creds,setcreds] = useState({
         email:'',
@@ -16,7 +13,7 @@ const Login = () => {
     }
   
     const submit = (event) => {
-        
+
     }
 
 
