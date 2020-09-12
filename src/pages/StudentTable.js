@@ -46,7 +46,7 @@ const StudentTable = ( props ) => {
   
   useEffect(() => {
     axios
-      .get("http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/students")
+      .get("https://hidden-lowlands-56956.herokuapp.com/students")
       .then(res => {
         setStudents(res.data.students);
 
@@ -56,7 +56,7 @@ const StudentTable = ( props ) => {
 
   const curserClick = (item,row) => {
     setSelected(students[item]);
-      const url = `http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/subjects/${row.studentid}`
+      const url = `https://hidden-lowlands-56956.herokuapp.com/subjects/${row.studentid}`
       axios
       .get(url)
       .then((res)=>{
@@ -71,7 +71,7 @@ const StudentTable = ( props ) => {
 
   const resetSubjects = () => {
     
-    const url = `http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/subjects/${selected.studentid}`
+    const url = `https://hidden-lowlands-56956.herokuapp.com/subjects/${selected.studentid}`
       axios
       .get(url)
       .then((res)=>{
@@ -86,7 +86,7 @@ const StudentTable = ( props ) => {
 
   const refreshing = () =>{
     axios
-      .get("http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/students")
+      .get("https://hidden-lowlands-56956.herokuapp.com/students")
       .then(res => {
         setStudents(res.data.students);
       })
@@ -95,42 +95,42 @@ const StudentTable = ( props ) => {
 
   const addStudent = () => {
     axios
-    .post('http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/students/add',newStudent)
+    .post('https://hidden-lowlands-56956.herokuapp.com/students/add',newStudent)
     .then(()=>refreshing() )
     .catch(err=> console.log(err))
   }
 
   const editStudent = (id) => {
     axios
-    .put(`http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/students/${id}`,selected)
+    .put(`https://hidden-lowlands-56956.herokuapp.com/students/${id}`,selected)
     .then(()=>refreshing())
     .catch(err=> console.log(err))
   }
   
   const deleteStudent = (id) => {
     axios
-    .delete(`http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/delete/student/${id}`)
+    .delete(`https://hidden-lowlands-56956.herokuapp.com/delete/student/${id}`)
     .then(()=>refreshing())
     .catch(err=> console.log(err))
   }
 
   const addSubject = (id) => {
     axios
-    .post('http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/students/add',)
+    .post('https://hidden-lowlands-56956.herokuapp.com/students/add',)
     .then(()=>refreshing() )
     .catch(err=> console.log(err))
   }
 
   const editSubject = (id) => {
     axios
-    .put(`http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/subjects/${id}`)
+    .put(`https://hidden-lowlands-56956.herokuapp.com/subjects/${id}`)
     .then(()=>refreshing())
     .catch(err=> console.log(err))
   }
   
   const deleteSubject = (id) => {
     axios
-    .delete(`http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/delete/subject/${id}`)
+    .delete(`https://hidden-lowlands-56956.herokuapp.com/delete/subject/${id}`)
     .then(()=>refreshing())
     .catch()
   }

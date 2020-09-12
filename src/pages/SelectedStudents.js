@@ -39,14 +39,14 @@ const useStyles = makeStyles({
     
     const addSub = () => {
         axios
-        .post('http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/subject/add',subjectOb)
+        .post('https://hidden-lowlands-56956.herokuapp.com/subject/add',subjectOb)
         .then(()=>props.reFunc())
         .catch()
     }
 
     const deleteSubject = (id) => {
         axios
-        .delete(`http://ec2-18-224-44-133.us-east-2.compute.amazonaws.com/delete/subject/${id}`)
+        .delete(`https://hidden-lowlands-56956.herokuapp.com/delete/subject/${id}`)
         .then(()=>props.reFunc())
         .catch()
       }
